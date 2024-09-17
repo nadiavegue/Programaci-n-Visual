@@ -36,7 +36,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ct_HoraActual = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bt_Actualizar = new System.Windows.Forms.Button();
+            this.bt_Mostrar = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,22 +102,22 @@
             this.label1.Text = "Hora actual";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // bt_Actualizar
+            // bt_Mostrar
             // 
-            this.bt_Actualizar.Location = new System.Drawing.Point(28, 178);
-            this.bt_Actualizar.Name = "bt_Actualizar";
-            this.bt_Actualizar.Size = new System.Drawing.Size(75, 23);
-            this.bt_Actualizar.TabIndex = 3;
-            this.bt_Actualizar.Text = "Actualizar";
-            this.bt_Actualizar.UseVisualStyleBackColor = true;
-            this.bt_Actualizar.Click += new System.EventHandler(this.bt_Actualizar_Click);
+            this.bt_Mostrar.Location = new System.Drawing.Point(31, 178);
+            this.bt_Mostrar.Name = "bt_Mostrar";
+            this.bt_Mostrar.Size = new System.Drawing.Size(100, 23);
+            this.bt_Mostrar.TabIndex = 3;
+            this.bt_Mostrar.Text = "Mostrar analógico";
+            this.bt_Mostrar.UseVisualStyleBackColor = true;
+            this.bt_Mostrar.Click += new System.EventHandler(this.bt_Mostrar_Click);
             // 
             // RelojDigital
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(250, 250);
-            this.Controls.Add(this.bt_Actualizar);
+            this.Controls.Add(this.bt_Mostrar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ct_HoraActual);
             this.Controls.Add(this.menuStrip1);
@@ -127,6 +127,7 @@
             this.MaximizeBox = false;
             this.Name = "RelojDigital";
             this.Text = "Reloj digital";
+            this.Load += new System.EventHandler(this.RelojDigital_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -143,7 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.TextBox ct_HoraActual;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button bt_Actualizar;
+        private System.Windows.Forms.Button bt_Mostrar;
     }
 }
 

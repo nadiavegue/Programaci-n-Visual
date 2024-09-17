@@ -34,7 +34,7 @@ namespace reloj
             ct_HoraActual.Enter += ct_HoraActual_Enter;
 
             //vincular evento click de boton bt_Actulizar
-            bt_Actualizar.Click += bt_Actualizar_Click;
+            //bt_Actualizar.Click += bt_Actualizar_Click;
 
             //suscribir al evento Shown del formulario
             this.Shown += RelojDigital_Shown;
@@ -82,14 +82,32 @@ namespace reloj
 
         }
 
+        /*
         private void bt_Actualizar_Click(object sender, EventArgs e)
         {
             MostrarHoraActual();
         }
+        */
 
         private void RelojDigital_Shown(object sender, EventArgs e)
         {
-            m_RelojAnalagico.Location = new Point(this.Location.X + 250 + 10, 250);
+            m_RelojAnalagico.Show(this);
+            //m_RelojAnalagico.Location = new Point(this.Location.X + 250 + 10, 250);
+        }
+
+        private void RelojDigital_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bt_Mostrar_Click(object sender, EventArgs e)
+        {
+            //alternar visibilidad reloj analogico
+            m_RelojAnalagico.Visible = !m_RelojAnalagico.Visible;
+
+            //Cambiar el texto del boton segun visibilidad de reloj analogico
+            bt_Mostrar.Text = m_RelojAnalagico.Visible ? "Ocultar analógico" : "Mostrar analógico";
+
         }
     }
 }
