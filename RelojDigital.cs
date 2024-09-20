@@ -8,106 +8,98 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace reloj
+namespace prac_1
 {
-    public partial class RelojDigital : Form
-    {
-        private Timer timer;
-        private TimeSpan m_DesfaseHorario = new TimeSpan(1, 0, 0);
-        private RelojAnalogico m_RelojAnalagico = new RelojAnalogico();
+	public partial class RelojDigital : Form
+	{
 
-        public RelojDigital()
-        {
-            InitializeComponent();
+		//campo privado
+		private TimeSpan m_DesfaseHorario = new TimeSpan(0);
+		//campo privado m_RelojAnalogico de tipo RelojAnalogico asignando un objeto de su clase
+		private RelojAnalogico m_relojAnalogico = new RelojAnalogico();	
 
-            //configurar el timer
-            timer = new Timer();
-            timer.Interval = 1000;
-            timer.Tick += Timer_Tick;
-            timer.Start();
+		//constructor de reloj digital
+		public RelojDigital()
+		{
+			InitializeComponent();
 
-            //Inicializar valor caja de texto
-            MostrarHoraActual();
+			//inicializar hora
+			MostrarHoraActual();
 
-            
-            //vincular evento enter caja de texto
-            ct_HoraActual.Enter += ct_HoraActual_Enter;
+			//hacer visible reloj Analogico
+			m_relojAnalogico.Show(this);
 
-            //vincular evento click de boton bt_Actulizar
-            //bt_Actualizar.Click += bt_Actualizar_Click;
+			//evento shown
+			this.Shown += RelojdDigital_Shown;
 
-            //suscribir al evento Shown del formulario
-            this.Shown += RelojDigital_Shown;
+			//configurar boton para que actulice
+			//bt_Actualizar.Click += bt_Actualizar_Click;
 
-            //hacer visible  reloj analogico
-            m_RelojAnalagico.Show(this);
-        }
-
-        private void ct_HoraActual_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            ct_HoraActual.Text = DateTime.Now.ToString("HH:mm:ss");
-        }
-
-        private void MostrarHoraActual()
-        {
-            DateTime hora = DateTime.Now + m_DesfaseHorario;
-            ct_HoraActual.Text = hora.ToString("HH:mm:ss");
-        }
+		}
 
 
+		private void RelojDigital_Load(object sender, EventArgs e)
+		{
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+		}
 
-        }
+		//manejador orden salir
+		private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		//Evento click para mostrar AcercaDe como un dialogo modal
+		private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AcercaDe dlg = new AcercaDe();
+			dlg.ShowDialog();	//muestra el dialogo de forma modal
+		}
 
-        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AcercaDe dlg = new AcercaDe();
-            dlg.ShowDialog();
-        }
+		//metodo privado para mostrar la hora
+		private void MostrarHoraActual()
+		{
+			//obtener la hora actual y ajustarla desfase y actulizar la caja de texto
+			DateTime hora = DateTime.Now + m_DesfaseHorario;
+			ct_HoraActual.Text = hora.ToLongTimeString();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+			//actualizar la hora del reloj analogico
+			m_relojAnalogico.Hora = hora;
 
-        }
+		}
+		private void bt_Actualizar_Click(object sender, EventArgs e)
+		{
+			MostrarHoraActual();
+		}
 
-        /*
-        private void bt_Actualizar_Click(object sender, EventArgs e)
-        {
-            MostrarHoraActual();
-        }
-        */
+		private void RelojdDigital_Shown(object sender, EventArgs e)
+		{
+			//ajustar posicion del reloj analogico
+			m_relojAnalogico.Location = new Point(this.Location.X + 250 + 10, 100);
+		}
 
-        private void RelojDigital_Shown(object sender, EventArgs e)
-        {
-            m_RelojAnalagico.Show(this);
-            //m_RelojAnalagico.Location = new Point(this.Location.X + 250 + 10, 250);
-        }
+		//hacer click para generar evento tick
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			MostrarHoraActual();
+		}
 
-        private void RelojDigital_Load(object sender, EventArgs e)
-        {
+		private void bt_Mostrar_Click(object sender, EventArgs e)
+		{
+			//Alternar visibilidad del reloj analogico
+			m_relojAnalogico.Visible = !m_relojAnalogico.Visible;
 
-        }
+			//Cambiar texto del boton segun la visibilidad del reloj analogico
+			bt_Mostrar.Text = m_relojAnalogico.Visible ? "Ocultar analógico" : "Mostrar analógico";
+		}
 
-        private void bt_Mostrar_Click(object sender, EventArgs e)
-        {
-            //alternar visibilidad reloj analogico
-            m_RelojAnalagico.Visible = !m_RelojAnalagico.Visible;
-
-            //Cambiar el texto del boton segun visibilidad de reloj analogico
-            bt_Mostrar.Text = m_RelojAnalagico.Visible ? "Ocultar analógico" : "Mostrar analógico";
-
-        }
-    }
+		//metodo cambiar hora
+		internal void CambiarHora(int horas, int minutos, int segundos)
+		{
+			DateTime actual = DateTime.Now;
+			DateTime hora = new DateTime(actual.Year, actual.Month, actual.Day, horas, minutos, segundos);
+			m_DesfaseHorario = hora - actual;
+			MostrarHoraActual();
+		}
+	}
 }

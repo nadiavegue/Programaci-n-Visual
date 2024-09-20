@@ -1,49 +1,57 @@
-﻿namespace reloj
+﻿namespace prac_1
 {
-    partial class RelojAnalogico
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class RelojAnalogico
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // RelojAnalogico
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 250);
-            this.ControlBox = false;
-            this.Name = "RelojAnalogico";
-            this.ShowInTaskbar = false;
-            this.Text = "Reloj Analógico";
-            this.Load += new System.EventHandler(this.RelojAnalogico_Load);
-            this.ResumeLayout(false);
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelojAnalogico));
+			this.SuspendLayout();
+			// 
+			// RelojAnalogico
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(250, 250);
+			this.ControlBox = false;
+			this.DoubleBuffered = true;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Location = new System.Drawing.Point(360, 0);
+			this.Name = "RelojAnalogico";
+			this.ShowInTaskbar = false;
+			this.Text = "Reloj analógico";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.relojAnalogico_FormClosing);
+			this.Load += new System.EventHandler(this.RelojAnalogico_Load);
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RelojAnalogico_MouseDown);
+			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RelojAnalogico_MouseMove);
+			this.Resize += new System.EventHandler(this.RelojAnalogico_Resize);
+			this.ResumeLayout(false);
 
-        }
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }

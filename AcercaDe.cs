@@ -8,22 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace reloj
+namespace prac_1
 {
-    public partial class AcercaDe : Form
-    {
-        public AcercaDe()
-        {
-            InitializeComponent();
+	public partial class AcercaDe : Form
+	{
+		public AcercaDe()
+		{
+			InitializeComponent();
+		}
 
-  
-        }
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
 
-        private void AcercaDe_Load(object sender, EventArgs e)
-        {
+		}
 
-        }
+		private void pictureBox1_Click_1(object sender, EventArgs e)
+		{
 
-
-    }
+		}
+	}
 }
